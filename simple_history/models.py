@@ -322,11 +322,9 @@ class HistoricalRecords(object):
             "history_id": history_id_field,
             "history_date": models.DateTimeField(),
             "history_change_reason": history_change_reason_field,
-            "history_user": models.ForeignKey(
-                user_model,
+            "history_user": models.CharField(
+                max_length=100,
                 null=True,
-                related_name=self.user_related_name,
-                on_delete=models.SET_NULL,
             ),
             "history_type": models.CharField(
                 max_length=1,

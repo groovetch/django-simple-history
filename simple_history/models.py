@@ -378,7 +378,7 @@ class HistoricalRecords(object):
 
     def create_historical_record(self, instance, history_type, using=None):
         history_date = getattr(instance, "_history_date", now())
-        history_user = self.get_history_user(instance)
+        history_user = self.get_history_user(instance).email if self.get_history_user(instance) else None
         history_change_reason = getattr(instance, "changeReason", None)
         manager = getattr(instance, self.manager_name)
 

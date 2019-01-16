@@ -326,6 +326,7 @@ class HistoricalRecords(object):
                 max_length=100,
                 null=True,
             ),
+            "history_user_id": models.IntegerField(null=True)
             "history_type": models.CharField(
                 max_length=1,
                 choices=(("+", _("Created")), ("~", _("Changed")), ("-", _("Deleted"))),
@@ -377,6 +378,7 @@ class HistoricalRecords(object):
     def create_historical_record(self, instance, history_type, using=None):
         history_date = getattr(instance, "_history_date", now())
         history_user = self.get_history_user(instance).email if self.get_history_user(instance) else None
+        history_user_id = self.get_history_user(instance).id if self.get_history_user(instance) else None
         history_change_reason = getattr(instance, "changeReason", None)
         manager = getattr(instance, self.manager_name)
 

@@ -326,7 +326,7 @@ class HistoricalRecords(object):
                 max_length=100,
                 null=True,
             ),
-            "history_user_id": models.IntegerField(null=True)
+            "history_user_id": models.IntegerField(null=True),
             "history_type": models.CharField(
                 max_length=1,
                 choices=(("+", _("Created")), ("~", _("Changed")), ("-", _("Deleted"))),
@@ -390,6 +390,7 @@ class HistoricalRecords(object):
             history_date=history_date,
             history_type=history_type,
             history_user=history_user,
+            history_user_id=history_user_id,
             history_change_reason=history_change_reason,
             **attrs
         )
@@ -399,6 +400,7 @@ class HistoricalRecords(object):
             instance=instance,
             history_date=history_date,
             history_user=history_user,
+            history_user_id=history_user_id,
             history_change_reason=history_change_reason,
             history_instance=history_instance,
             using=using,
@@ -412,6 +414,7 @@ class HistoricalRecords(object):
             history_instance=history_instance,
             history_date=history_date,
             history_user=history_user,
+            history_user_id=history_user_id,
             history_change_reason=history_change_reason,
             using=using,
         )
